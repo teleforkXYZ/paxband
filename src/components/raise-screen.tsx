@@ -14,7 +14,7 @@ import {
 export function RaiseScreen() {
   const [name, setName] = useState("");
   const [underlying, setUnderlying] = useState("");
-  const [band, setBand] = useState<Band>(3);
+  const [band, setBand] = useState<Band>(1);
   const [symbol, setSymbol] = useState("");
   const [symbolTouched, setSymbolTouched] = useState(false);
   const [cap, setCap] = useState<number>(250_000);
@@ -59,8 +59,7 @@ export function RaiseScreen() {
 
   return (
     <Shell>
-      <p className="text-sm tracking-widest text-gold uppercase">Raise</p>
-      <h1 className="mt-2 font-display text-5xl leading-none">File a band. Do not mint it.</h1>
+      <h1 className="mt-3 max-w-xl font-display text-6xl leading-none">Write a note. Do not mint it.</h1>
       <form
         className="mt-8 grid gap-6"
         onSubmit={(event) => {

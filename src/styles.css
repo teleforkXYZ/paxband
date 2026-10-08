@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-paper: #f6f8fb;
-  --color-ink: #000a12;
-  --color-green: #00845e;
-  --color-lime: #b3d234;
-  --color-muted: #43494e;
-  --color-gold: #00845e;
-  --color-shut: #005222;
-  --font-display: "Geist", "Mulish", system-ui, sans-serif;
-  --font-sans: "Mulish", system-ui, sans-serif;
+  --color-paper: #f4f1ea;
+  --color-ink: #1a1a1a;
+  --color-green: #1f3d32;
+  --color-lime: #1f3d32;
+  --color-gold: #1f3d32;
+  --color-muted: #6b6560;
+  --color-shut: #1f3d32;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Outfit", system-ui, sans-serif;
 }
 
 @layer base {
@@ -22,105 +22,65 @@
   body {
     margin: 0;
     min-height: 100vh;
-    background: #f6f8fb;
+    background: var(--color-paper);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    font-size: 1.05rem;
+    font-size: 1.125rem;
     line-height: 1.5;
-  }
-
-  body {
-    background:
-      radial-gradient(69% 55% at 78% -8%, #a1d62ccc, #0094d800 68%),
-      #f6f8fb;
   }
 
   h1,
   h2,
   .font-display {
     font-family: var(--font-display);
-    font-weight: 600;
+    font-weight: 560;
     letter-spacing: -0.03em;
   }
-}
-
-.mark {
-  width: 1.75rem;
-  height: 1.75rem;
-  fill: var(--color-green);
 }
 
 .nav-link {
   display: inline-flex;
   align-items: center;
   min-height: 2.75rem;
-  padding: 0 0.9rem;
+  padding: 0 0.95rem;
   border-radius: 999px;
   color: var(--color-ink);
   text-decoration: none;
-  font-size: 0.95rem;
 }
 
 .nav-link.is-on,
 .nav-link[data-status="active"] {
   background: var(--color-ink);
-  color: #f6f8fb;
+  color: var(--color-paper);
 }
 
-.shut {
-  margin: 0;
-  padding: 0.7rem 0.9rem;
-  border-radius: 0.9rem;
-  color: var(--color-shut);
-  background: #e7f6df;
-  font-size: 0.95rem;
-}
-
-.card,
-.board {
-  border: 1px solid color-mix(in srgb, var(--color-ink) 8%, transparent);
-  border-radius: 1.1rem;
-  background: #fff;
+.piece {
+  padding: 1.75rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--color-ink) 14%, transparent);
 }
 
 .card {
-  padding: 1rem 1.1rem;
-}
-
-.board {
-  overflow: hidden;
-}
-
-.launch-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1.5fr) 4.5rem 7rem auto;
-  gap: 0.75rem;
-  align-items: center;
-  padding: 0.9rem 1rem;
-  border-top: 1px solid color-mix(in srgb, var(--color-ink) 8%, transparent);
-}
-
-.launch-row:first-child {
-  border-top: 0;
+  padding: 1.25rem 1.3rem;
+  border-radius: 1.5rem;
+  background: #fffdf8;
 }
 
 .action {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.75rem;
-  padding: 0 1.1rem;
+  min-height: 3rem;
+  padding: 0 1.25rem;
   border: 0;
   border-radius: 999px;
-  background: var(--color-green);
-  color: #fff;
+  background: var(--color-ink);
+  color: var(--color-paper);
   text-decoration: none;
   font: inherit;
-  font-weight: 600;
 }
 
 .action:hover {
-  background: #005222;
+  background: var(--color-green);
 }
 
 .quiet,
@@ -136,63 +96,34 @@
   border: 0;
   background: transparent;
   color: var(--color-green);
-  font-weight: 600;
 }
 
 .chip {
   min-height: 2.75rem;
   padding: 0 1rem;
-  border: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-ink) 16%, transparent);
   border-radius: 999px;
-  background: #fff;
+  background: transparent;
 }
 
 .chip.is-on {
   background: var(--color-ink);
-  color: #f6f8fb;
+  color: var(--color-paper);
   border-color: var(--color-ink);
 }
 
 .field {
   width: 100%;
-  min-height: 2.75rem;
-  padding: 0.55rem 0.8rem;
-  border: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
-  border-radius: 0.8rem;
-  background: #fff;
+  min-height: 3rem;
+  padding: 0.6rem 0.9rem;
+  border: 0;
+  border-radius: 1rem;
+  background: #fffdf8;
 }
 
 .field:focus {
-  outline: 2px solid var(--color-lime);
-  outline-offset: 1px;
-}
-
-.pill {
-  display: inline-flex;
-  align-items: center;
-  min-height: 1.7rem;
-  padding: 0 0.55rem;
-  border-radius: 999px;
-  background: #e7f6df;
-  color: var(--color-shut);
-  font-size: 0.8rem;
-  font-weight: 700;
-}
-
-.pill.is-foreign {
-  background: #e9ebef;
-  color: var(--color-muted);
-  font-weight: 600;
-}
-
-@media (max-width: 640px) {
-  .launch-row {
-    grid-template-columns: minmax(0, 1fr) auto;
-  }
-
-  .launch-meta {
-    display: none;
-  }
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -3,52 +3,39 @@ import { Shell } from "@/components/shell";
 const STEPS = [
   {
     n: "01",
-    title: "Someone deposits the quote",
-    body: "On the desks that actually run, that quote is USDG. The deposit mints a share of a vault. The share is the token.",
+    title: "No token.",
+    body: "The name PAXGx1L is not issued. A pool is not opened. The note stays on this browser.",
   },
   {
     n: "02",
-    title: "The position lives somewhere else",
-    body: "LongX does not hold the stock token. A vault owns a margin account on Lighter. An executor rebalances toward 1×, 3×, or whatever band was set.",
+    title: "A small hedge, ours.",
+    body: "Our own money, off chain, 1× PAXG on Lighter. What gets published is a diary: price, funding, the account. Not a product.",
   },
   {
     n: "03",
-    title: "The price is a proof, not a guess",
-    body: "Net asset value is read from a posted state root. There is no oracle feed and no reporter you trust because they said so.",
+    title: "Read it without us.",
+    body: "If the account value cannot be read on chain without asking Paxband, mint is not written.",
   },
   {
     n: "04",
-    title: "A pool is only the exit",
-    body: "Uniswap is where the token trades. It is not what makes it 5×. If mint and redeem are closed, the pool price can drift away from the vault.",
+    title: "Then, and only then.",
+    body: "Open, mint, redeem. USDG cannot leave the vault for another address. The first band is 1×. The cap is small. XAU is not renamed PAXG.",
   },
 ];
 
 export function MethodScreen() {
   return (
     <Shell>
-      <p className="text-sm tracking-widest text-gold uppercase">Method</p>
-      <h1 className="mt-2 max-w-3xl font-display text-5xl leading-none">Why this desk does not deploy.</h1>
-      <ol className="mt-8 grid gap-4 sm:grid-cols-2">
+      <h1 className="max-w-xl font-display text-6xl leading-none sm:text-7xl">The long way is the safe way.</h1>
+      <ol className="mt-14">
         {STEPS.map((step) => (
-          <li key={step.n} className="card">
-            <p className="text-sm text-gold">{step.n}</p>
-            <h2 className="mt-2 font-display text-2xl leading-tight">{step.title}</h2>
-            <p className="mt-2 leading-relaxed text-muted">{step.body}</p>
+          <li key={step.n} className="piece">
+            <p className="text-sm text-muted">{step.n}</p>
+            <h2 className="mt-2 font-display text-4xl leading-none">{step.title}</h2>
+            <p className="mt-4 max-w-lg text-muted">{step.body}</p>
           </li>
         ))}
       </ol>
-      <section className="card mt-4">
-        <h2 className="font-display text-2xl">What would have to be true</h2>
-        <ul className="mt-3 grid gap-2 text-sm leading-relaxed">
-          <li>The execution venue already lists that underlying as a perp.</li>
-          <li>A vault can prove the account, and withdrawals cannot be redirected.</li>
-          <li>The band, the cap, and the rebalance range are fixed in the contract.</li>
-          <li>The token name is not the asset. PAXGx5L is not PAXG.</li>
-        </ul>
-        <p className="mt-4 text-sm leading-relaxed text-muted">
-          None of that is switched on here. Filing a draft does not call a factory. When a venue lists the book, this page is the place the band would open. Until then the cleat stays on.
-        </p>
-      </section>
     </Shell>
   );
 }
