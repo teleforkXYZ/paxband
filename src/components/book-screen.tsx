@@ -3,8 +3,12 @@ import { useEffect, useState } from "react";
 import { Shell } from "@/components/shell";
 import { type Draft, REFERENCE, loadDrafts, saveDrafts } from "@/data/bands";
 
+const FILTERS = ["All", "Filed", "1×", "3×", "5×", "7×", "Elsewhere"] as const;
+type Filter = (typeof FILTERS)[number];
+
 export function BookScreen() {
   const [drafts, setDrafts] = useState<Draft[]>([]);
+  const [filter, setFilter] = useState<Filter>("All");
 
   useEffect(() => {
     setDrafts(loadDrafts());
@@ -16,81 +20,84 @@ export function BookScreen() {
     saveDrafts(next);
   }
 
+  const showFiled = filter === "All" || filter === "Filed" || filter.endsWith("×");
+  const showForeign = filter === "All" || filter === "Elsewhere" || filter.endsWith("×");
+  const band = filter.endsWith("×") ? Number(filter.replace("×", "")) : null;
+  const filed = drafts.filter((row) => showFiled && (band === null || row.band === band));
+  const foreign = REFERENCE.filter((row) => showForeign && (band === null || row.band === band));
+  const empty = filed.length + foreign.length === 0;
+
   return (
     <Shell>
-      <p className="text-sm tracking-widest text-gold uppercase">The book</p>
-      <h1 className="mt-2 max-w-xl font-display text-5xl leading-none text-ink sm:text-6xl">
-        File the band. Leave the stamp off.
-      </h1>
-      <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
-        A 1×, 3×, 5× or 7× token is a claim on a perp account, not a name you type.
-        Paxband files the request. It does not deploy it. The name is not Paxos.
-      </p>
-      <div className="mt-6">
+      <p className="text-sm font-semibold tracking-widest text-green uppercase">Launches</p>
+      <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
+        <h1 className="max-w-xl font-display text-5xl leading-none text-ink">
+          File a band. Do not mint it.
+        </h1>
         <Link to="/raise" className="action">
-          File a draft
+          File a band
         </Link>
       </div>
+      <p className="mt-4 max-w-2xl text-muted">
+        A launch here is a draft. 1×, 3×, 5×, 7×. Quoted in USDG. Paxband is not Paxos, and a ticker is not a position.
+      </p>
 
-      <section className="mt-12">
-        <div className="mb-3 flex items-baseline justify-between gap-3">
-          <h2 className="font-display text-2xl">Filed here</h2>
-          <span className="text-sm text-muted">{drafts.length === 0 ? "Empty" : `${drafts.length} on this browser`}</span>
-        </div>
-        {drafts.length === 0 ? (
-          <p className="card text-muted">No draft yet. Raise one. It stays on this browser and never becomes a contract.</p>
-        ) : (
-          <ul className="grid gap-3">
-            {drafts.map((row) => (
-              <li key={row.id} className="card flex flex-wrap items-center justify-between gap-3">
-                <div>
-                  <p className="font-display text-2xl leading-none">{row.symbol}</p>
-                  <p className="mt-1 text-sm text-muted">
-                    {row.name} · {row.band}× · cap ${row.cap.toLocaleString("en-US")} · {row.underlying}
-                  </p>
-                </div>
-                <button type="button" className="quiet" onClick={() => remove(row.id)}>
-                  Pull
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
+      <div className="mt-6 flex flex-wrap gap-2" role="toolbar" aria-label="Filter launches">
+        {FILTERS.map((item) => (
+          <button
+            key={item}
+            type="button"
+            className={item === filter ? "chip is-on" : "chip"}
+            aria-pressed={item === filter}
+            onClick={() => setFilter(item)}
+          >
+            {item}
+          </button>
+        ))}
+      </div>
+
+      <section className="board mt-4">
+        {empty ? (
+          <p className="p-4 text-muted">Nothing in this filter. File a band, or switch back to All.</p>
+        ) : null}
+        {filed.map((row) => (
+          <article key={row.id} className="launch-row">
+            <div className="min-w-0">
+              <p className="truncate font-display text-xl leading-none">{row.symbol}</p>
+              <p className="mt-1 truncate text-sm text-muted">
+                {row.name} · {row.underlying} · cap ${row.cap.toLocaleString("en-US")}
+              </p>
+            </div>
+            <p className="launch-meta text-sm">{row.band}×</p>
+            <p>
+              <span className="pill">Draft</span>
+            </p>
+            <button type="button" className="quiet" onClick={() => remove(row.id)}>
+              Pull
+            </button>
+          </article>
+        ))}
+        {foreign.map((row) => (
+          <article key={row.symbol} className="launch-row">
+            <div className="min-w-0">
+              <p className="truncate font-display text-xl leading-none">{row.symbol}</p>
+              <p className="mt-1 truncate text-sm text-muted">
+                {row.name} · {row.price} · {row.tvl}
+              </p>
+            </div>
+            <p className="launch-meta text-sm">{row.band}×</p>
+            <p>
+              <span className="pill is-foreign">Not ours</span>
+            </p>
+            <p className="launch-meta text-right text-sm text-muted">{row.cap}</p>
+          </article>
+        ))}
       </section>
-
-      <section className="mt-12">
-        <h2 className="font-display text-2xl">The shape, elsewhere</h2>
-        <p className="mt-1 max-w-2xl text-sm text-muted">
-          These three are live on LongX, not here. Figures are public as of 8 Oct 2026. They are a perp wrapper on Lighter, quoted in USDG. Copying the ticker does not copy the position.
+      {foreign.length > 0 ? (
+        <p className="mt-3 text-sm text-muted">
+          Not ours means live on LongX, public figures as of 8 Oct 2026. Those vaults sit on Lighter. Copying the row does not copy the position.
         </p>
-        <div className="mt-4 overflow-x-auto">
-          <table className="w-full min-w-[36rem] text-left text-sm">
-            <thead className="text-xs tracking-widest text-muted uppercase">
-              <tr>
-                <th className="py-2 pr-3 font-medium">Token</th>
-                <th className="py-2 pr-3 font-medium">Band</th>
-                <th className="py-2 pr-3 font-medium">Price</th>
-                <th className="py-2 pr-3 font-medium">TVL</th>
-                <th className="py-2 font-medium">Cap</th>
-              </tr>
-            </thead>
-            <tbody>
-              {REFERENCE.map((row) => (
-                <tr key={row.symbol} className="border-t border-ink/15">
-                  <td className="py-3 pr-3">
-                    <span className="block font-medium text-ink">{row.symbol}</span>
-                    <span className="text-muted">{row.name}</span>
-                  </td>
-                  <td className="py-3 pr-3">{row.band}×</td>
-                  <td className="py-3 pr-3">{row.price}</td>
-                  <td className="py-3 pr-3">{row.tvl}</td>
-                  <td className="py-3">{row.cap}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
+      ) : null}
     </Shell>
   );
 }

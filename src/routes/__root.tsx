@@ -16,7 +16,7 @@ export const Route = createRootRoute({
         content:
           "Paxband files leverage-band drafts. Nothing here mints a token. Not Paxos. Not Long. Not a perp.",
       },
-      { name: "theme-color", content: "#f3efe6" },
+      { name: "theme-color", content: "#f6f8fb" },
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
@@ -24,7 +24,7 @@ export const Route = createRootRoute({
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,640&family=Outfit:wght@400;500;600&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Geist:wght@500;600;700&family=Mulish:wght@400;500;600;700&display=swap",
       },
       { rel: "stylesheet", href: appCss },
       { rel: "manifest", href: "/__grok/manifest.webmanifest" },

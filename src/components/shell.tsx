@@ -2,15 +2,15 @@ import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
 const LINKS = [
-  { to: "/", label: "Book" },
-  { to: "/raise", label: "Raise" },
+  { to: "/", label: "Launches" },
+  { to: "/raise", label: "File" },
   { to: "/method", label: "Method" },
 ] as const;
 
 export function Mark() {
   return (
     <svg className="mark" viewBox="0 0 32 32" aria-hidden="true">
-      <rect x="6" y="12" width="20" height="8" rx="1.4" />
+      <rect x="4" y="13" width="24" height="6" rx="3" />
     </svg>
   );
 }

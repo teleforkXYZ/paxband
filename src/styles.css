@@ -1,13 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-paper: #f3efe6;
-  --color-ink: #1c1915;
-  --color-gold: #9a7340;
-  --color-shut: #8f3d32;
-  --color-muted: #6f675e;
-  --font-display: "Fraunces", Georgia, serif;
-  --font-sans: "Outfit", system-ui, sans-serif;
+  --color-paper: #f6f8fb;
+  --color-ink: #000a12;
+  --color-green: #00845e;
+  --color-lime: #b3d234;
+  --color-muted: #43494e;
+  --color-gold: #00845e;
+  --color-shut: #005222;
+  --font-display: "Geist", "Mulish", system-ui, sans-serif;
+  --font-sans: "Mulish", system-ui, sans-serif;
 }
 
 @layer base {
@@ -16,34 +18,36 @@
     cursor: pointer;
   }
 
-  html {
-    background: var(--color-paper);
-    color: var(--color-ink);
-  }
-
+  html,
   body {
     margin: 0;
     min-height: 100vh;
-    background: var(--color-paper);
+    background: #f6f8fb;
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-size: 1.05rem;
     line-height: 1.5;
   }
 
+  body {
+    background:
+      radial-gradient(69% 55% at 78% -8%, #a1d62ccc, #0094d800 68%),
+      #f6f8fb;
+  }
+
   h1,
   h2,
   .font-display {
     font-family: var(--font-display);
-    font-weight: 560;
+    font-weight: 600;
+    letter-spacing: -0.03em;
   }
 }
 
 .mark {
-  width: 2rem;
-  height: 2rem;
-  fill: var(--color-gold);
-  stroke: none;
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: var(--color-green);
 }
 
 .nav-link {
@@ -60,24 +64,44 @@
 .nav-link.is-on,
 .nav-link[data-status="active"] {
   background: var(--color-ink);
-  color: var(--color-paper);
+  color: #f6f8fb;
 }
 
 .shut {
   margin: 0;
   padding: 0.7rem 0.9rem;
-  border: 1px solid color-mix(in srgb, var(--color-shut) 45%, transparent);
-  border-radius: 0.8rem;
+  border-radius: 0.9rem;
   color: var(--color-shut);
-  background: color-mix(in srgb, var(--color-shut) 8%, var(--color-paper));
+  background: #e7f6df;
   font-size: 0.95rem;
+}
+
+.card,
+.board {
+  border: 1px solid color-mix(in srgb, var(--color-ink) 8%, transparent);
+  border-radius: 1.1rem;
+  background: #fff;
 }
 
 .card {
   padding: 1rem 1.1rem;
-  border: 1px solid color-mix(in srgb, var(--color-ink) 14%, transparent);
-  border-radius: 1rem;
-  background: color-mix(in srgb, white 55%, var(--color-paper));
+}
+
+.board {
+  overflow: hidden;
+}
+
+.launch-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) 4.5rem 7rem auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.9rem 1rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-ink) 8%, transparent);
+}
+
+.launch-row:first-child {
+  border-top: 0;
 }
 
 .action {
@@ -88,14 +112,15 @@
   padding: 0 1.1rem;
   border: 0;
   border-radius: 999px;
-  background: var(--color-ink);
-  color: var(--color-paper);
+  background: var(--color-green);
+  color: #fff;
   text-decoration: none;
   font: inherit;
+  font-weight: 600;
 }
 
 .action:hover {
-  background: var(--color-gold);
+  background: #005222;
 }
 
 .quiet,
@@ -110,20 +135,21 @@
   padding: 0 0.8rem;
   border: 0;
   background: transparent;
-  color: var(--color-shut);
+  color: var(--color-green);
+  font-weight: 600;
 }
 
 .chip {
   min-height: 2.75rem;
   padding: 0 1rem;
-  border: 1px solid color-mix(in srgb, var(--color-ink) 20%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
   border-radius: 999px;
-  background: transparent;
+  background: #fff;
 }
 
 .chip.is-on {
   background: var(--color-ink);
-  color: var(--color-paper);
+  color: #f6f8fb;
   border-color: var(--color-ink);
 }
 
@@ -131,14 +157,42 @@
   width: 100%;
   min-height: 2.75rem;
   padding: 0.55rem 0.8rem;
-  border: 1px solid color-mix(in srgb, var(--color-ink) 20%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
   border-radius: 0.8rem;
-  background: color-mix(in srgb, white 70%, var(--color-paper));
+  background: #fff;
 }
 
 .field:focus {
-  outline: 2px solid var(--color-gold);
+  outline: 2px solid var(--color-lime);
   outline-offset: 1px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.7rem;
+  padding: 0 0.55rem;
+  border-radius: 999px;
+  background: #e7f6df;
+  color: var(--color-shut);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.pill.is-foreign {
+  background: #e9ebef;
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .launch-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .launch-meta {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
