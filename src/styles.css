@@ -369,6 +369,32 @@
   white-space: nowrap;
 }
 
+.note {
+  display: grid;
+  align-items: start;
+  gap: 1.75rem;
+}
+
+.note-frame {
+  display: block;
+  overflow: hidden;
+  border-radius: 1.75rem;
+  background: var(--color-ink);
+}
+
+.note-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 960px) {
+  .note {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 3rem;
+  }
+}
+
 .sheet {
   display: grid;
   gap: 1.25rem;

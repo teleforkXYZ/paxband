@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { CaBox } from "@/components/ca-box";
+import { PaxosNote } from "@/components/paxos-note";
 import { Shell } from "@/components/shell";
 import { FACTS, HOME_SPEC, TICKER } from "@/data/sheet";
 
@@ -53,6 +54,10 @@ export function BookScreen() {
             Opening Paxband / USDG does not create an ounce, a PAXG balance, or a Lighter position.
           </p>
         </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl px-5 py-14 sm:px-8 sm:py-20">
+        <PaxosNote />
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-5 py-14 sm:px-8 sm:py-20">

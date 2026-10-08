@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { CaBox } from "@/components/ca-box";
+import { PaxosNote } from "@/components/paxos-note";
 import { Shell } from "@/components/shell";
 import { CONTRACT, NOTS, PAIR_SPEC } from "@/data/sheet";
 
@@ -38,6 +39,8 @@ export function RaiseScreen() {
             <li key={line}>{line}</li>
           ))}
         </ul>
+
+        <PaxosNote />
 
         <p className="lede">
           When the contract exists, it is stamped here. A USDG pair on Long does not become a Lighter position, and it does not become PAXG.
