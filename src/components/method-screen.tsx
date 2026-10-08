@@ -21,12 +21,12 @@ const STEPS = [
 export function MethodScreen() {
   return (
     <Shell>
-      <p className="text-sm">Long</p>
+      <p className="text-sm text-teal">Long</p>
       <h1 className="mt-2 max-w-xl font-display text-6xl leading-none">The venue, not the ounce.</h1>
       <ol className="mt-12">
         {STEPS.map((step) => (
           <li key={step.n} className="piece">
-            <p className="text-sm">{step.n}</p>
+            <p className="text-sm text-teal">{step.n}</p>
             <h2 className="mt-2 font-display text-4xl leading-none">{step.title}</h2>
             <p className="mt-4 max-w-lg">{step.body}</p>
           </li>

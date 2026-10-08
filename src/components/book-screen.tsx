@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Rings, Shell } from "@/components/shell";
+import { Shell } from "@/components/shell";
 
 const FACTS = [
   {
@@ -22,9 +22,9 @@ const FACTS = [
 export function BookScreen() {
   return (
     <Shell>
-      <Rings />
-      <p className="mt-8 text-sm">Token</p>
-      <h1 className="mt-2 max-w-xl font-display text-6xl leading-none text-ink sm:text-7xl">Paxband.</h1>
+      <h1 className="m-0">
+        <img className="lockup" src="/logo.png" alt="Paxband" />
+      </h1>
       <p className="mt-6 max-w-md text-lg">Quoted in USDG. On Long. The pair is not open.</p>
       <div className="mt-8">
         <Link to="/raise" className="action">
@@ -34,7 +34,7 @@ export function BookScreen() {
       <ol className="mt-16">
         {FACTS.map((fact) => (
           <li key={fact.k} className="piece">
-            <p className="text-sm">{fact.k}</p>
+            <p className="text-sm text-teal">{fact.k}</p>
             <h2 className="mt-2 font-display text-4xl leading-none">{fact.title}</h2>
             <p className="mt-4 max-w-lg">{fact.body}</p>
           </li>

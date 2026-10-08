@@ -23,8 +23,8 @@ export function Shell({ children }: { children: ReactNode }) {
   return (
     <div className="mx-auto flex min-h-screen w-full max-w-3xl flex-col px-5 py-6 sm:px-8">
       <header className="flex flex-wrap items-center justify-between gap-4">
-        <Link to="/" className="font-display text-3xl leading-none text-ink">
-          Paxband
+        <Link to="/" className="text-ink">
+          <img className="nav-logo" src="/logo.png" alt="Paxband" />
         </Link>
         <nav className="flex gap-1" aria-label="Sections">
           {LINKS.map((item) => (

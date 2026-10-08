@@ -10,7 +10,7 @@ const ROWS = [
 export function RaiseScreen() {
   return (
     <Shell>
-      <p className="text-sm">Pair</p>
+      <p className="text-sm text-teal">Pair</p>
       <h1 className="mt-2 max-w-xl font-display text-6xl leading-none">Paxband / USDG.</h1>
       <p className="mt-6 max-w-lg text-lg">
         This is the market. It is not live. There is no contract on this page, and nothing here can be bought.

@@ -1,14 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-paper: #ffd000;
-  --color-ink: #111111;
-  --color-green: #111111;
-  --color-lime: #ffd000;
-  --color-gold: #111111;
-  --color-muted: #3a3408;
-  --color-shut: #111111;
-  --font-display: "Fraunces", Georgia, serif;
+  --color-paper: #ffffff;
+  --color-ink: #003050;
+  --color-teal: #00a0a0;
+  --color-gold: #d0a828;
+  --color-green: #003050;
+  --color-lime: #d0a828;
+  --color-muted: #3d6478;
+  --color-shut: #003050;
+  --font-display: "Outfit", system-ui, sans-serif;
   --font-sans: "Outfit", system-ui, sans-serif;
 }
 
@@ -22,26 +23,30 @@
   body {
     margin: 0;
     min-height: 100vh;
-    background: var(--color-paper);
+    background: #ffffff;
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-size: 1.125rem;
     line-height: 1.5;
   }
 
-  body {
-    background:
-      repeating-radial-gradient(circle at 50% 42%, transparent 0 46px, rgb(255 255 255 / 28%) 47px 48px),
-      #ffd000;
-  }
-
   h1,
   h2,
   .font-display {
     font-family: var(--font-display);
-    font-weight: 560;
+    font-weight: 600;
     letter-spacing: -0.03em;
   }
+}
+
+.nav-logo {
+  height: 2.5rem;
+  width: auto;
+}
+
+.lockup {
+  width: min(100%, 34rem);
+  height: auto;
 }
 
 .nav-link {
@@ -57,46 +62,18 @@
 .nav-link.is-on,
 .nav-link[data-status="active"] {
   background: var(--color-ink);
-  color: var(--color-paper);
-}
-
-.mark-svg {
-  width: 12.5rem;
-  height: 12.5rem;
-  overflow: visible;
-}
-
-.blob {
-  fill: none;
-  stroke-width: 16;
-  stroke-linejoin: round;
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
-.blob-a {
-  stroke: #111;
-}
-
-.blob-b {
-  stroke: rgb(70 70 70 / 70%);
-  transform: rotate(32deg) scale(1.02);
-}
-
-.blob-c {
-  stroke: rgb(17 17 17 / 40%);
-  transform: rotate(-28deg) scale(0.96);
+  color: #fff;
 }
 
 .piece {
   padding: 1.75rem 0;
-  border-top: 1px solid rgb(17 17 17 / 18%);
+  border-top: 1px solid color-mix(in srgb, var(--color-ink) 14%, transparent);
 }
 
 .card {
   padding: 1.25rem 1.3rem;
   border-radius: 1.5rem;
-  background: #fff4b0;
+  background: #f4fbfb;
 }
 
 .action {
@@ -108,13 +85,13 @@
   border: 0;
   border-radius: 999px;
   background: var(--color-ink);
-  color: var(--color-paper);
+  color: #fff;
   text-decoration: none;
   font: inherit;
 }
 
 .action:hover {
-  background: #000;
+  background: var(--color-teal);
 }
 
 .quiet,
@@ -134,14 +111,14 @@
 .chip {
   min-height: 2.75rem;
   padding: 0 1rem;
-  border: 1px solid rgb(17 17 17 / 25%);
+  border: 1px solid color-mix(in srgb, var(--color-ink) 20%, transparent);
   border-radius: 999px;
   background: transparent;
 }
 
 .chip.is-on {
   background: var(--color-ink);
-  color: var(--color-paper);
+  color: #fff;
   border-color: var(--color-ink);
 }
 
@@ -151,28 +128,12 @@
   padding: 0.6rem 0.9rem;
   border: 0;
   border-radius: 1rem;
-  background: #fff4b0;
+  background: #f4fbfb;
 }
 
 .field:focus {
-  outline: 2px solid var(--color-ink);
+  outline: 2px solid var(--color-teal);
   outline-offset: 2px;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .blob-b {
-    animation: sway 16s ease-in-out infinite;
-  }
-
-  .blob-c {
-    animation: sway 20s ease-in-out infinite reverse;
-  }
-}
-
-@keyframes sway {
-  50% {
-    transform: rotate(48deg) scale(0.98);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
