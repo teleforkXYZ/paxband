@@ -49,10 +49,10 @@ export const TICKER = [
   "Not Paxos",
   "Quote USDG",
   "Venue Long",
-  "Contract not set",
+  "Contract 0xd90eb4e7500612b4e7364d9135bfb519a2901e18",
   "Market not open",
   "Not the bar",
 ] as const;
 
 /** Contract address, stored exactly as pasted. Empty until one is sent. */
-export const CONTRACT = "";
+export const CONTRACT = "0xd90eb4e7500612b4e7364d9135bfb519a2901e18";
