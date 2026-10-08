@@ -1,8 +1,10 @@
 import { Link } from "@tanstack/react-router";
+import { CaBox } from "@/components/ca-box";
 import { Shell } from "@/components/shell";
-import { NOTS, PAIR_SPEC } from "@/data/sheet";
+import { CONTRACT, NOTS, PAIR_SPEC } from "@/data/sheet";
 
 export function RaiseScreen() {
+  const contract = CONTRACT.length > 0 ? CONTRACT : "Not set";
   return (
     <Shell>
       <section className="mx-auto w-full max-w-6xl px-5 pt-6 sm:px-8 sm:pt-12">
@@ -11,8 +13,11 @@ export function RaiseScreen() {
           Paxband <em>/ USDG.</em>
         </h1>
         <p className="lede">
-          This is the market. It is not live. There is no contract on this page, and nothing here can be bought.
+          {CONTRACT.length > 0
+            ? "The address is stamped below, as written. The market is not open, and nothing here can be bought."
+            : "This is the market. It is not live. There is no contract on this page, and nothing here can be bought."}
         </p>
+        <CaBox />
 
         <div className="sheet">
           <img className="sheet-mark" src="/symbol.jpg" alt="" />
@@ -20,7 +25,9 @@ export function RaiseScreen() {
             {PAIR_SPEC.map(([label, value]) => (
               <div key={label}>
                 <dt>{label}</dt>
-                <dd>{value}</dd>
+                <dd className={label === "Contract" ? "ca-spec" : undefined}>
+                  {label === "Contract" ? contract : value}
+                </dd>
               </div>
             ))}
           </dl>

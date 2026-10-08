@@ -53,3 +53,6 @@ export const TICKER = [
   "Market not open",
   "Not the bar",
 ] as const;
+
+/** Contract address, stored exactly as pasted. Empty until one is sent. */
+export const CONTRACT = "";

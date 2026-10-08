@@ -199,6 +199,65 @@
   font-family: var(--font-display);
   font-size: 1.85rem;
   line-height: 1.05;
+  overflow-wrap: anywhere;
+}
+
+.ca-spec {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+.ca {
+  margin-top: 1.75rem;
+  padding: 1.15rem 1.2rem 1.2rem;
+  border-radius: 1.5rem;
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.ca-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.ca-kicker {
+  color: var(--color-gold);
+}
+
+.ca-value {
+  margin: 0.85rem 0 0;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  word-break: break-all;
+}
+
+.ca-note {
+  margin: 0.7rem 0 0;
+  color: color-mix(in srgb, var(--color-paper) 78%, transparent);
+  font-size: 0.95rem;
+}
+
+.ca-copy {
+  min-height: 2.75rem;
+  padding: 0 1.05rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--color-gold);
+  color: var(--color-ink);
+  font: inherit;
+  font-weight: 600;
+}
+
+.ca-copy:disabled {
+  background: color-mix(in srgb, var(--color-paper) 16%, transparent);
+  color: color-mix(in srgb, var(--color-paper) 70%, transparent);
 }
 
 .band {

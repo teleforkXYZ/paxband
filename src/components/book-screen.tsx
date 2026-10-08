@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { CaBox } from "@/components/ca-box";
 import { Shell } from "@/components/shell";
 import { FACTS, HOME_SPEC, TICKER } from "@/data/sheet";
 
@@ -22,6 +23,7 @@ export function BookScreen() {
             Why it waits
           </Link>
         </div>
+        <CaBox />
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-5 pt-10 sm:px-8 sm:pt-14">
