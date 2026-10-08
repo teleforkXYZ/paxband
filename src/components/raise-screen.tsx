@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { CaBox } from "@/components/ca-box";
 import { PaxosNote } from "@/components/paxos-note";
 import { Shell } from "@/components/shell";
+import { TapeBoard } from "@/components/tape";
 import { CONTRACT, NOTS, PAIR_SPEC } from "@/data/sheet";
 
 export function RaiseScreen() {
@@ -19,6 +20,7 @@ export function RaiseScreen() {
             : "This is the market. It is not live. There is no contract on this page, and nothing here can be bought."}
         </p>
         <CaBox />
+        <TapeBoard />
 
         <div className="sheet">
           <img className="sheet-mark" src="/symbol.jpg" alt="" />

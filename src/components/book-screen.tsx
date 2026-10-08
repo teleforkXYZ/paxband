@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { CaBox } from "@/components/ca-box";
 import { PaxosNote } from "@/components/paxos-note";
 import { Shell } from "@/components/shell";
+import { TapeBoard } from "@/components/tape";
 import { FACTS, HOME_SPEC, TICKER } from "@/data/sheet";
 
 export function BookScreen() {
@@ -25,6 +26,10 @@ export function BookScreen() {
           </Link>
         </div>
         <CaBox />
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl px-5 py-10 sm:px-8 sm:py-14">
+        <TapeBoard />
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-5 pt-10 sm:px-8 sm:pt-14">
