@@ -16,7 +16,7 @@ export const Route = createRootRoute({
         content:
           "Paxband keeps the bar, the perp, and the band apart. Nothing here mints a token. Not Paxos.",
       },
-      { name: "theme-color", content: "#f4f1ea" },
+      { name: "theme-color", content: "#ffd000" },
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },

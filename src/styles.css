@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-paper: #f4f1ea;
-  --color-ink: #1a1a1a;
-  --color-green: #1f3d32;
-  --color-lime: #1f3d32;
-  --color-gold: #1f3d32;
-  --color-muted: #6b6560;
-  --color-shut: #1f3d32;
+  --color-paper: #ffd000;
+  --color-ink: #111111;
+  --color-green: #111111;
+  --color-lime: #ffd000;
+  --color-gold: #111111;
+  --color-muted: #3a3408;
+  --color-shut: #111111;
   --font-display: "Fraunces", Georgia, serif;
   --font-sans: "Outfit", system-ui, sans-serif;
 }
@@ -27,6 +27,12 @@
     font-family: var(--font-sans);
     font-size: 1.125rem;
     line-height: 1.5;
+  }
+
+  body {
+    background:
+      repeating-radial-gradient(circle at 50% 42%, transparent 0 46px, rgb(255 255 255 / 28%) 47px 48px),
+      #ffd000;
   }
 
   h1,
@@ -54,15 +60,43 @@
   color: var(--color-paper);
 }
 
+.mark-svg {
+  width: 12.5rem;
+  height: 12.5rem;
+  overflow: visible;
+}
+
+.blob {
+  fill: none;
+  stroke-width: 16;
+  stroke-linejoin: round;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.blob-a {
+  stroke: #111;
+}
+
+.blob-b {
+  stroke: rgb(70 70 70 / 70%);
+  transform: rotate(32deg) scale(1.02);
+}
+
+.blob-c {
+  stroke: rgb(17 17 17 / 40%);
+  transform: rotate(-28deg) scale(0.96);
+}
+
 .piece {
   padding: 1.75rem 0;
-  border-top: 1px solid color-mix(in srgb, var(--color-ink) 14%, transparent);
+  border-top: 1px solid rgb(17 17 17 / 18%);
 }
 
 .card {
   padding: 1.25rem 1.3rem;
   border-radius: 1.5rem;
-  background: #fffdf8;
+  background: #fff4b0;
 }
 
 .action {
@@ -80,7 +114,7 @@
 }
 
 .action:hover {
-  background: var(--color-green);
+  background: #000;
 }
 
 .quiet,
@@ -95,13 +129,12 @@
   padding: 0 0.8rem;
   border: 0;
   background: transparent;
-  color: var(--color-green);
 }
 
 .chip {
   min-height: 2.75rem;
   padding: 0 1rem;
-  border: 1px solid color-mix(in srgb, var(--color-ink) 16%, transparent);
+  border: 1px solid rgb(17 17 17 / 25%);
   border-radius: 999px;
   background: transparent;
 }
@@ -118,12 +151,28 @@
   padding: 0.6rem 0.9rem;
   border: 0;
   border-radius: 1rem;
-  background: #fffdf8;
+  background: #fff4b0;
 }
 
 .field:focus {
   outline: 2px solid var(--color-ink);
   outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .blob-b {
+    animation: sway 16s ease-in-out infinite;
+  }
+
+  .blob-c {
+    animation: sway 20s ease-in-out infinite reverse;
+  }
+}
+
+@keyframes sway {
+  50% {
+    transform: rotate(48deg) scale(0.98);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

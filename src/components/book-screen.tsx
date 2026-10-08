@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Shell } from "@/components/shell";
+import { Rings, Shell } from "@/components/shell";
 
 const PIECES = [
   {
@@ -22,11 +22,12 @@ const PIECES = [
 export function BookScreen() {
   return (
     <Shell>
-      <h1 className="max-w-xl font-display text-6xl leading-none text-ink sm:text-7xl">
+      <Rings />
+      <h1 className="mt-8 max-w-xl font-display text-6xl leading-none text-ink sm:text-7xl">
         The band is not the bar.
       </h1>
-      <p className="mt-6 max-w-md text-lg text-muted">
-        Three things. Kept apart. Nothing here mints a fourth.
+      <p className="mt-6 max-w-md text-lg">
+        Three rings. Kept apart. Nothing here mints a fourth.
       </p>
       <div className="mt-8">
         <Link to="/raise" className="action">
@@ -36,9 +37,9 @@ export function BookScreen() {
       <ol className="mt-16">
         {PIECES.map((piece) => (
           <li key={piece.k} className="piece">
-            <p className="text-sm text-muted">{piece.k}</p>
+            <p className="text-sm">{piece.k}</p>
             <h2 className="mt-2 font-display text-4xl leading-none">{piece.title}</h2>
-            <p className="mt-4 max-w-lg text-muted">{piece.body}</p>
+            <p className="mt-4 max-w-lg">{piece.body}</p>
           </li>
         ))}
       </ol>
