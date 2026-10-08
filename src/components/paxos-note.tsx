@@ -6,10 +6,10 @@ export function PaxosNote() {
       <div>
         <p className="kicker">On X</p>
         <h2 className="display display-md mt-4">
-          Paxos, on <em>the bar.</em>
+          Even the bar <em>is paying.</em>
         </h2>
         <p className="lede">
-          Their post. One hundred thousand dollars in USDG, over three months, for borrowing USDG against PAXG on Kamino. That collateral is PAXG. This page is Paxband.
+          Paxos put a hundred thousand in USDG on PAXG. The band is the name still early enough to say first.
         </p>
         <a className="text-link mt-4" href={POST} target="_blank" rel="noreferrer">
           Read it on X

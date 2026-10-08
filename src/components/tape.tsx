@@ -89,7 +89,7 @@ export function TapeBoard() {
           Buys and <em>sells.</em>
         </h2>
         <p className="lede">
-          Paxband / USDG on Uniswap. The hour is the pool. Each row is a transfer on the chain.
+          The pool is live. Every row is a real print. Scroll is how you get late.
         </p>
       </div>
 

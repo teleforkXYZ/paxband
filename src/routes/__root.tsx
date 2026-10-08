@@ -14,7 +14,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "Paxband is a token. The intended pair is Paxband / USDG on Long. The pair is not open. Not Paxos.",
+          "Paxband / USDG is live. Copy the CA. The tape is already moving.",
       },
       { name: "theme-color", content: "#003050" },
     ],

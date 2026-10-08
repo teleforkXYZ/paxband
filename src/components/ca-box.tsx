@@ -22,7 +22,7 @@ export function CaBox() {
       <p className="ca-value">{set ? CONTRACT : "Not set"}</p>
       <p className="ca-note">
         {set
-          ? "Printed as given. The market is still not open."
+          ? "Copy it. The pool is already printing."
           : "Nothing is stamped yet. An address lands here exactly as sent."}
       </p>
     </div>

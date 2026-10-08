@@ -4,18 +4,18 @@ import { Shell } from "@/components/shell";
 const STEPS = [
   {
     n: "01",
-    title: "Long quotes in USDG.",
-    body: "On Long, USDG is the quote. Deposit it and a vault share comes out. The share is their token, for a market they already run, against a Lighter position they can prove.",
+    title: "The quote is USDG.",
+    body: "Paxband trades against USDG. One side of the print is the band. The other side is the dollar. Both are already on the tape.",
   },
   {
     n: "02",
-    title: "Paxband is not that share.",
-    body: "We write our own token. It does not take USDG, it does not redeem gold, and it does not read a proof. The symbol is PAXBAND, never PAXG.",
+    title: "The name is the meme.",
+    body: "Paxband. Short enough to yell, new enough that saying it still counts as early.",
   },
   {
     n: "03",
-    title: "The pair waits.",
-    body: "No contract is set. The market is not open. The address and the live Long market go on the sheet together, or not at all.",
+    title: "The pool is live.",
+    body: "Robinhood. Uniswap. The CA is public. Buys and sells are landing while you read this.",
   },
 ] as const;
 
@@ -25,22 +25,22 @@ export function MethodScreen() {
       <section className="mx-auto w-full max-w-6xl px-5 pt-6 sm:px-8 sm:pt-12">
         <p className="kicker">Long</p>
         <h1 className="display display-md mt-4 max-w-3xl">
-          The venue, <em>not the ounce.</em>
+          Still early. <em>Not for long.</em>
         </h1>
         <p className="lede">
-          Long is where a Paxband / USDG quote can live later. It is not the issuer, and it is not the bar.
+          The pool is loud. The name is still small. That gap is the whole trade.
         </p>
 
         <div className="split mt-12">
           <article>
-            <p className="kicker">Not this</p>
-            <h3>Their vault</h3>
-            <p>Minting through Long would sell their share. We do not have their proof, and we will not wear it.</p>
+            <p className="kicker">Later</p>
+            <h3>The recap</h3>
+            <p>Someone will post the chart after the move and call it research. The blocks will already be old.</p>
           </article>
           <article className="is-ours">
-            <p className="kicker">This</p>
-            <h3>Our token</h3>
-            <p>A Paxband contract with supply at zero. Deposit reverts. Redeem reverts. Mint stays closed.</p>
+            <p className="kicker">Now</p>
+            <h3>The CA</h3>
+            <p>One address. A live Paxband / USDG pool. Prints you can tap. That is the whole invite.</p>
           </article>
         </div>
 
@@ -55,7 +55,7 @@ export function MethodScreen() {
         </ol>
 
         <p className="lede">
-          The draft cannot take a deposit. It is not deployed, and it is not a sale.
+          The story is short on purpose. Copy the CA. Watch the tape. Let the timeline catch up.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-2">
           <a className="action" href="/Paxband.sol" download>

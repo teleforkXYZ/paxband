@@ -1,57 +1,57 @@
 export const FACTS = [
   {
     n: "01",
-    k: "Token",
+    k: "Name",
     title: "Paxband.",
-    body: "The token name is Paxband. It is not PAXG, and it is not Paxos.",
+    body: "Say it while it is still a small word. The tape already knows it.",
   },
   {
     n: "02",
     k: "Quote",
     title: "USDG.",
-    body: "The pair is Paxband / USDG. A USDG quote is the other side of a market. It is not an ounce of gold.",
+    body: "Every print has two sides. This one settles in USDG. That is the quote, and it is moving.",
   },
   {
     n: "03",
-    k: "Venue",
-    title: "Long.",
-    body: "The venue is Long. Their markets are theirs. This pair is not one of them until the contract exists and the market is actually there.",
+    k: "Pool",
+    title: "Live.",
+    body: "Robinhood. Uniswap. Buys and sells are on the chain. The group chat is late by definition.",
   },
 ] as const;
 
 export const HOME_SPEC = [
   ["Token", "Paxband"],
   ["Quote", "USDG"],
-  ["Venue", "Long"],
-  ["Market", "Not open"],
+  ["Pool", "Uniswap"],
+  ["Market", "Live"],
 ] as const;
 
 export const PAIR_SPEC = [
   ["Token", "Paxband"],
   ["Quote", "USDG"],
   ["Pair", "Paxband / USDG"],
-  ["Venue", "Long"],
+  ["Chain", "Robinhood"],
   ["Contract", "Not set"],
-  ["Market", "Not open"],
+  ["Market", "Live"],
 ] as const;
 
 export const NOTS = [
-  "Not an ounce of gold.",
-  "Not a PAXG balance.",
-  "Not a Lighter position.",
-  "Not a vault share Long already runs.",
-  "Not a price read from a proof.",
+  "The tape does not send a reminder.",
+  "Early is a timestamp, not a mood.",
+  "Copy the CA before you explain it.",
+  "The chart will not wait for the group chat.",
+  "Late is just a later block.",
 ] as const;
 
 export const TICKER = [
-  "Paxband is a token",
-  "Not PAXG",
-  "Not Paxos",
-  "Quote USDG",
-  "Venue Long",
-  "Contract 0xd90eb4e7500612b4e7364d9135bfb519a2901e18",
-  "Market not open",
-  "Not the bar",
+  "You're still early",
+  "Copy the CA",
+  "The tape is live",
+  "Paxband / USDG",
+  "Don't blink",
+  "Bids are already in",
+  "The band doesn't rewind",
+  "FOMO has a ticker",
 ] as const;
 
 /** Contract address, stored exactly as pasted. Empty until one is sent. */

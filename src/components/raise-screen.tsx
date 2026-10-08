@@ -16,8 +16,8 @@ export function RaiseScreen() {
         </h1>
         <p className="lede">
           {CONTRACT.length > 0
-            ? "The address is stamped below, as written. The market is not open, and nothing here can be bought."
-            : "This is the market. It is not live. There is no contract on this page, and nothing here can be bought."}
+            ? "The address is on the card. The tape is under it. Paxband / USDG does not wait for a perfect entry."
+            : "The pair is the story. The address lands here the moment it exists."}
         </p>
         <CaBox />
         <TapeBoard />
@@ -45,11 +45,11 @@ export function RaiseScreen() {
         <PaxosNote />
 
         <p className="lede">
-          When the contract exists, it is stamped here. A USDG pair on Long does not become a Lighter position, and it does not become PAXG.
+          The CA is the ticket. The prints are the proof. Copy it before the timeline does.
         </p>
         <div className="mt-8">
           <Link to="/method" className="action">
-            How the venue fits
+            Why it runs
           </Link>
         </div>
       </section>

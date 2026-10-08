@@ -28,13 +28,13 @@ export function Shell({ children }: { children: ReactNode }) {
         </nav>
         <p className="status">
           <span className="dot" aria-hidden="true" />
-          Not open
+          Live
         </p>
       </header>
       <main className="flex-1">{children}</main>
       <footer className="mx-auto w-full max-w-6xl px-5 pt-8 pb-12 sm:px-8">
         <img className="footer-logo" src="/logo.png" alt="" />
-        <p className="mt-4 max-w-sm text-muted">Paxband is not Paxos. The pair is not open.</p>
+        <p className="mt-4 max-w-sm text-muted">Paxband / USDG. The tape is live. Copy the CA.</p>
       </footer>
     </div>
   );
