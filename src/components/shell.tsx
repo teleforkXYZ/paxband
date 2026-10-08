@@ -2,9 +2,9 @@ import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
 const LINKS = [
-  { to: "/", label: "Tape" },
-  { to: "/raise", label: "Note" },
-  { to: "/method", label: "Path" },
+  { to: "/", label: "Token" },
+  { to: "/raise", label: "Pair" },
+  { to: "/method", label: "Long" },
 ] as const;
 
 export function Rings() {
@@ -41,7 +41,7 @@ export function Shell({ children }: { children: ReactNode }) {
       </header>
       <main className="flex-1 py-12">{children}</main>
       <footer className="py-8 text-sm">
-        Paxband is not Paxos. Not a sale. Not a wallet.
+        Paxband is not Paxos. The pair is not open.
       </footer>
     </div>
   );

@@ -14,7 +14,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "Paxband keeps the bar, the perp, and the band apart. Nothing here mints a token. Not Paxos.",
+          "Paxband is a token. The intended pair is Paxband / USDG on Long. The pair is not open. Not Paxos.",
       },
       { name: "theme-color", content: "#ffd000" },
     ],
