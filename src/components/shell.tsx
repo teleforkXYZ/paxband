@@ -7,26 +7,14 @@ const LINKS = [
   { to: "/method", label: "Long" },
 ] as const;
 
-export function Rings() {
-  const d =
-    "M102 22C138 14 158 48 176 46C198 44 196 78 190 104C204 132 176 150 164 172C148 198 112 196 86 184C54 198 24 168 26 136C14 108 36 86 30 60C22 28 62 30 102 22Z";
-  return (
-    <svg className="mark-svg" viewBox="0 0 200 200" aria-hidden="true">
-      <path className="blob blob-a" d={d} />
-      <path className="blob blob-b" d={d} />
-      <path className="blob blob-c" d={d} />
-    </svg>
-  );
-}
-
 export function Shell({ children }: { children: ReactNode }) {
   return (
-    <div className="mx-auto flex min-h-screen w-full max-w-3xl flex-col px-5 py-6 sm:px-8">
-      <header className="flex flex-wrap items-center justify-between gap-4">
-        <Link to="/" className="text-ink">
+    <div className="flex min-h-screen flex-col">
+      <header className="mx-auto flex w-full max-w-6xl flex-wrap items-center gap-x-5 gap-y-2 px-5 py-5 sm:px-8">
+        <Link to="/" className="mr-auto" aria-label="Paxband home">
           <img className="nav-logo" src="/logo.png" alt="Paxband" />
         </Link>
-        <nav className="flex gap-1" aria-label="Sections">
+        <nav className="flex items-center" aria-label="Sections">
           {LINKS.map((item) => (
             <Link
               key={item.to}
@@ -38,10 +26,15 @@ export function Shell({ children }: { children: ReactNode }) {
             </Link>
           ))}
         </nav>
+        <p className="status">
+          <span className="dot" aria-hidden="true" />
+          Not open
+        </p>
       </header>
-      <main className="flex-1 py-12">{children}</main>
-      <footer className="py-8 text-sm">
-        Paxband is not Paxos. The pair is not open.
+      <main className="flex-1">{children}</main>
+      <footer className="mx-auto w-full max-w-6xl px-5 pt-8 pb-12 sm:px-8">
+        <img className="footer-logo" src="/logo.png" alt="" />
+        <p className="mt-4 max-w-sm text-muted">Paxband is not Paxos. The pair is not open.</p>
       </footer>
     </div>
   );

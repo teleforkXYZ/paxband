@@ -1,31 +1,46 @@
+import { Link } from "@tanstack/react-router";
 import { Shell } from "@/components/shell";
-
-const ROWS = [
-  ["Pair", "Paxband / USDG"],
-  ["Venue", "Long"],
-  ["Contract", "Not set"],
-  ["Market", "Not open"],
-] as const;
+import { NOTS, PAIR_SPEC } from "@/data/sheet";
 
 export function RaiseScreen() {
   return (
     <Shell>
-      <p className="text-sm text-teal">Pair</p>
-      <h1 className="mt-2 max-w-xl font-display text-6xl leading-none">Paxband / USDG.</h1>
-      <p className="mt-6 max-w-lg text-lg">
-        This is the market. It is not live. There is no contract on this page, and nothing here can be bought.
-      </p>
-      <dl className="mt-12">
-        {ROWS.map(([label, value]) => (
-          <div key={label} className="piece grid grid-cols-[7rem_1fr] gap-4">
-            <dt>{label}</dt>
-            <dd className="font-display text-3xl leading-none">{value}</dd>
-          </div>
-        ))}
-      </dl>
-      <p className="mt-10 max-w-lg">
-        When the contract exists, it is stamped here. A USDG pair on Long does not become a Lighter position, and it does not become PAXG.
-      </p>
+      <section className="mx-auto w-full max-w-6xl px-5 pt-6 sm:px-8 sm:pt-12">
+        <p className="kicker">Pair</p>
+        <h1 className="display display-md mt-4 max-w-3xl">
+          Paxband <em>/ USDG.</em>
+        </h1>
+        <p className="lede">
+          This is the market. It is not live. There is no contract on this page, and nothing here can be bought.
+        </p>
+
+        <div className="sheet">
+          <img className="sheet-mark" src="/symbol.jpg" alt="" />
+          <dl className="spec spec-six">
+            {PAIR_SPEC.map(([label, value]) => (
+              <div key={label}>
+                <dt>{label}</dt>
+                <dd>{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        <ul className="nots">
+          {NOTS.map((line) => (
+            <li key={line}>{line}</li>
+          ))}
+        </ul>
+
+        <p className="lede">
+          When the contract exists, it is stamped here. A USDG pair on Long does not become a Lighter position, and it does not become PAXG.
+        </p>
+        <div className="mt-8">
+          <Link to="/method" className="action">
+            How the venue fits
+          </Link>
+        </div>
+      </section>
     </Shell>
   );
 }
