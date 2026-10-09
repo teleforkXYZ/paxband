@@ -4,18 +4,18 @@ import { Shell } from "@/components/shell";
 const STEPS = [
   {
     n: "01",
-    title: "Two contracts.",
-    body: "BunkerTreasury first. Its payee is one wallet, written at deploy, and never replaced. Then BunkerCurve, with that treasury address in the constructor.",
+    title: "Deploy Bunker on Ethereum.",
+    body: "Remix, compiler 0.8.24, chain Ethereum mainnet. Constructor takes nothing. One billion BUNKER lands on the deployer. There is no second mint and no fee function.",
   },
   {
     n: "02",
-    title: "The rate is a constant.",
-    body: "150 basis points on the way in, 150 on the way out. No function raises it, pauses sells, or adds a wallet to a list.",
+    title: "Use Uniswap v3.",
+    body: "Position manager 0xC36442b4a4522E871399CD717aBDD847Ab11FE88. Fee tier 1% (10000). Create the pool if it does not exist, initialize the price, then mint a position. Approve both BUNKER and STRK to that manager first.",
   },
   {
     n: "03",
-    title: "The fee leaves the curve.",
-    body: "It does not sit in the pool and it does not buy BUNKER. withdraw() on the treasury sends the balance to the payee. That is an operator fee, not a payment to Starknet.",
+    title: "Sort the price.",
+    body: "token0 is the smaller address. If BUNKER is token0, the price is STRK per BUNKER. If STRK is token0, the price is inverted. Get this wrong and the pool opens at a nonsense rate. v4 is the same two tokens and a harder initialize. It is not required.",
   },
 ] as const;
 
@@ -23,15 +23,14 @@ export function MethodScreen() {
   return (
     <Shell>
       <section className="mx-auto w-full max-w-6xl px-5 pt-6 sm:px-8 sm:pt-12">
-        <p className="kicker">Fee</p>
+        <p className="kicker">Open</p>
         <h1 className="display display-md mt-4 max-w-3xl">
-          1.5% in. <em>1.5% out.</em>
+          Real STRK. <em>Real BUNKER.</em>
         </h1>
         <p className="lede">
-          A round trip keeps about 97% of the ETH, before the curve’s own price move. The missing
-          3% is the fee. Sells are not blocked.
+          Nothing is virtual in this pool. You put STRK in, and you put BUNKER in. There is no
+          1.5% skim. A transfer tax would take a cut of the STRK swap and the position would fail.
         </p>
-
         <ol className="steps">
           {STEPS.map((step) => (
             <li key={step.n} className="chapter">
@@ -41,16 +40,12 @@ export function MethodScreen() {
             </li>
           ))}
         </ol>
-
         <div className="mt-8 flex flex-wrap items-center gap-2">
-          <a className="action" href="/BunkerCurve.sol" download>
-            Curve
+          <a className="action" href="/Bunker.sol" download>
+            Bunker.sol
           </a>
-          <a className="action" href="/BunkerTreasury.sol" download>
-            Treasury
-          </a>
-          <Link to="/" className="text-link">
-            Back
+          <Link to="/raise" className="text-link">
+            The pair
           </Link>
         </div>
       </section>

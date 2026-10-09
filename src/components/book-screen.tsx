@@ -20,7 +20,7 @@ export function BookScreen() {
             The thread
           </a>
           <Link to="/raise" className="text-link">
-            BUNKER / ETH
+            BUNKER / STRK
           </Link>
         </div>
       </section>
@@ -156,16 +156,16 @@ export function BookScreen() {
           </div>
           <div>
             <dt>Pair</dt>
-            <dd>BUNKER / ETH</dd>
+            <dd>BUNKER / STRK</dd>
           </div>
           <div>
-            <dt>Fee</dt>
-            <dd>1.5% / 1.5%</dd>
+            <dt>Chain</dt>
+            <dd>Ethereum</dd>
           </div>
         </dl>
         <div className="mt-8 flex flex-wrap items-center gap-2">
           <Link to="/method" className="action">
-            The fee
+            Open the pool
           </Link>
           <a className="text-link" href={THREAD} target="_blank" rel="noreferrer">
             Source

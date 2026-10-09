@@ -1,29 +1,30 @@
 import { Link } from "@tanstack/react-router";
 import { Shell } from "@/components/shell";
 
+const STRK = "0xCa14007Eff0dB1f8135f4C25B34De49AB0d42766";
+
 const ROWS = [
-  ["Pair", "BUNKER / ETH"],
-  ["Virtual ETH", "1 ETH, not in the contract"],
-  ["Virtual tokens", "1,000,000,000"],
-  ["Opening price", "0.000000001 ETH"],
-  ["After 1 real ETH in", "Price is 4×, before fees"],
-  ["Both ways", "buy() and sell()"],
+  ["Pair", "BUNKER / STRK"],
+  ["Chain", "Ethereum"],
+  ["STRK", "The real contract, 18 decimals"],
+  ["Pool", "Uniswap v3, fee 1%"],
+  ["Supply", "1,000,000,000, minted once"],
+  ["Tax", "None. A transfer tax breaks the pool"],
 ] as const;
 
 export function RaiseScreen() {
   return (
     <Shell>
       <section className="mx-auto w-full max-w-6xl px-5 pt-6 sm:px-8 sm:pt-12">
-        <p className="kicker">Curve</p>
+        <p className="kicker">Pair</p>
         <h1 className="display display-md mt-4 max-w-3xl">
-          BUNKER <em>/ ETH.</em>
+          BUNKER <em>/ STRK.</em>
         </h1>
         <p className="lede">
-          The price starts as if the pool already held 1 ETH and a billion tokens. That ETH is
-          virtual. Nobody deposited it, and nobody can withdraw it. Real ETH arrives only when
-          someone calls buy, and sell pays it back, minus the fee.
+          The symbol is BUNKER. The market is BUNKER against the real STRK on Ethereum. v3, not the
+          Robinhood curve. v4 can host the same two tokens, but STRK already trades on v3, and that
+          is the pool wallets and charts read.
         </p>
-
         <dl className="spec spec-six">
           {ROWS.map(([label, value]) => (
             <div key={label}>
@@ -32,26 +33,20 @@ export function RaiseScreen() {
             </div>
           ))}
         </dl>
-
-        <div className="split mt-12">
-          <article>
-            <p className="kicker">Buy</p>
-            <h3>ETH in</h3>
-            <p>1.5% goes to the treasury. The rest moves the curve and mints BUNKER to the buyer.</p>
-          </article>
-          <article className="is-ours">
-            <p className="kicker">Sell</p>
-            <h3>ETH out</h3>
-            <p>The curve releases ETH, 1.5% of that release goes to the treasury, and the rest goes to the seller.</p>
-          </article>
-        </div>
-
         <p className="lede">
-          There is no Uniswap pair in this step. The contract is the market. A plain transfer is not a buy.
+          STRK is the contract at{" "}
+          <a className="text-link" href={`https://etherscan.io/token/${STRK}`} target="_blank" rel="noreferrer">
+            etherscan.io
+          </a>
+          . After Bunker is deployed, the lower address is token0. The starting price is STRK per
+          BUNKER only after you sort them. The pool is empty until you deposit both.
         </p>
-        <div className="mt-8">
-          <Link to="/method" className="action">
-            Where the fee sits
+        <div className="mt-8 flex flex-wrap items-center gap-2">
+          <a className="action" href="/Bunker.sol" download>
+            Bunker.sol
+          </a>
+          <Link to="/method" className="text-link">
+            How the pool is opened
           </Link>
         </div>
       </section>

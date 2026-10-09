@@ -3,8 +3,8 @@ import type { ReactNode } from "react";
 
 const LINKS = [
   { to: "/", label: "Bunker Mode" },
-  { to: "/raise", label: "Curve" },
-  { to: "/method", label: "Fee" },
+  { to: "/raise", label: "Pair" },
+  { to: "/method", label: "Open" },
 ] as const;
 
 const POST = "https://x.com/EliBenSasson/status/2108110129572741426";
@@ -38,7 +38,7 @@ export function Shell({ children }: { children: ReactNode }) {
       <footer className="mx-auto w-full max-w-6xl px-5 pt-8 pb-12 sm:px-8">
         <img className="footer-logo" src="/mark.png" alt="" />
         <p className="mt-4 max-w-md text-muted">
-          Bunker Mode, ticker BUNKER. A note on Eli Ben-Sasson’s Token2049 thread. Not STRK, and not Starknet.{" "}
+          Bunker Mode, ticker BUNKER. The market is BUNKER / STRK on Ethereum. Not STRK, and not Starknet.{" "}
           <a className="text-link" href={POST} target="_blank" rel="noreferrer">
             The post this is about
           </a>
