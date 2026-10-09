@@ -14,9 +14,9 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "Bunker Mode, ticker BUNKER. A BUNKER / ETH curve about Starknet considering an L1. Not STRK.",
+          "Bunker Mode. A note on Eli Ben-Sasson’s thread about an L1, quantum threats, and AI. Not STRK.",
       },
-      { name: "theme-color", content: "#080848" },
+      { name: "theme-color", content: "#07051c" },
     ],
     links: [
       { rel: "icon", type: "image/png", href: "/favicon.png" },
