@@ -4,18 +4,18 @@ import { Shell } from "@/components/shell";
 const STEPS = [
   {
     n: "01",
-    title: "The quote is USDG.",
-    body: "Paxband trades against USDG. One side of the print is the band. The other side is the dollar. Both are already on the tape.",
+    title: "Two contracts.",
+    body: "BunkerTreasury first. Its payee is one wallet, written at deploy, and never replaced. Then BunkerCurve, with that treasury address in the constructor.",
   },
   {
     n: "02",
-    title: "The name is the meme.",
-    body: "Paxband. Short enough to yell, new enough that saying it still counts as early.",
+    title: "The rate is a constant.",
+    body: "150 basis points on the way in, 150 on the way out. No function raises it, pauses sells, or adds a wallet to a list.",
   },
   {
     n: "03",
-    title: "The pool is live.",
-    body: "Robinhood. Uniswap. The CA is public. Buys and sells are landing while you read this.",
+    title: "The fee leaves the curve.",
+    body: "It does not sit in the pool and it does not buy BUNKER. withdraw() on the treasury sends the balance to the payee. That is an operator fee, not a payment to Starknet.",
   },
 ] as const;
 
@@ -23,26 +23,14 @@ export function MethodScreen() {
   return (
     <Shell>
       <section className="mx-auto w-full max-w-6xl px-5 pt-6 sm:px-8 sm:pt-12">
-        <p className="kicker">Long</p>
+        <p className="kicker">Fee</p>
         <h1 className="display display-md mt-4 max-w-3xl">
-          Still early. <em>Not for long.</em>
+          1.5% in. <em>1.5% out.</em>
         </h1>
         <p className="lede">
-          The pool is loud. The name is still small. That gap is the whole trade.
+          A round trip keeps about 97% of the ETH, before the curve’s own price move. The missing
+          3% is the fee. Sells are not blocked.
         </p>
-
-        <div className="split mt-12">
-          <article>
-            <p className="kicker">Later</p>
-            <h3>The recap</h3>
-            <p>Someone will post the chart after the move and call it research. The blocks will already be old.</p>
-          </article>
-          <article className="is-ours">
-            <p className="kicker">Now</p>
-            <h3>The CA</h3>
-            <p>One address. A live Paxband / USDG pool. Prints you can tap. That is the whole invite.</p>
-          </article>
-        </div>
 
         <ol className="steps">
           {STEPS.map((step) => (
@@ -54,15 +42,15 @@ export function MethodScreen() {
           ))}
         </ol>
 
-        <p className="lede">
-          The story is short on purpose. Copy the CA. Watch the tape. Let the timeline catch up.
-        </p>
         <div className="mt-8 flex flex-wrap items-center gap-2">
-          <a className="action" href="/Paxband.sol" download>
-            Draft contract
+          <a className="action" href="/BunkerCurve.sol" download>
+            Curve
           </a>
-          <Link to="/raise" className="text-link">
-            Back to the pair
+          <a className="action" href="/BunkerTreasury.sol" download>
+            Treasury
+          </a>
+          <Link to="/" className="text-link">
+            Back
           </Link>
         </div>
       </section>

@@ -3,7 +3,7 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import appCss from "../styles.css?url";
 
-const APP_NAME = "Paxband";
+const APP_NAME = "Bunker Mode";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -14,9 +14,9 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "Paxband / USDG is live. Copy the CA. The tape is already moving.",
+          "Bunker Mode, ticker BUNKER. A BUNKER / ETH curve about Starknet considering an L1. Not STRK.",
       },
-      { name: "theme-color", content: "#003050" },
+      { name: "theme-color", content: "#080848" },
     ],
     links: [
       { rel: "icon", type: "image/png", href: "/favicon.png" },

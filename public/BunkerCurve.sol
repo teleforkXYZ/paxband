@@ -20,12 +20,22 @@ contract BunkerCurve {
         "A curve on Robinhood Chain. Starknet said they are considering an L1, aiming to be the first fully quantum-resistant network, target 2027. This token is not that network and not STRK.";
     string public constant subject = "https://x.com/Starknet/status/2108113391525204034";
 
+    uint256 public constant FEE_BPS = 150;
+    uint256 public constant BPS = 10_000;
+    address public immutable treasury;
+
     uint256 public constant VIRTUAL_ETH = 1 ether;
     uint256 public constant VIRTUAL_TOKENS = 1_000_000_000 ether;
 
     uint256 public totalSupply;
     uint256 public tokensSold;
     uint256 public realEth;
+    uint256 private entered;
+
+    constructor(address treasury_) {
+        require(treasury_ != address(0) && treasury_ != address(this), "treasury");
+        treasury = treasury_;
+    }
 
     mapping(address => uint256) public balanceOf;
     mapping(address => mapping(address => uint256)) public allowance;
@@ -55,33 +65,45 @@ contract BunkerCurve {
         return reserveTokens * ethIn / (ethReserve() + ethIn);
     }
 
-    /// @notice ETH a sale of `tokensIn` would return. Rounds down.
+    /// @notice ETH the curve would release, before the 1.5% fee.
     function quoteSell(uint256 tokensIn) public view returns (uint256) {
         if (tokensIn == 0 || tokensIn > tokensSold) return 0;
         return ethReserve() * tokensIn / (tokenReserve() + tokensIn);
     }
 
     function buy() external payable returns (uint256 tokensOut) {
+        require(entered == 0, "reenter");
+        entered = 1;
         require(msg.value > 0, "no eth");
-        tokensOut = quoteBuy(msg.value);
+        uint256 fee = msg.value * FEE_BPS / BPS;
+        uint256 ethIn = msg.value - fee;
+        tokensOut = quoteBuy(ethIn);
         require(tokensOut > 0, "dust");
-        realEth += msg.value;
+        realEth += ethIn;
         tokensSold += tokensOut;
         _mint(msg.sender, tokensOut);
+        _take(fee);
         emit Buy(msg.sender, msg.value, tokensOut, realEth, tokensSold);
+        entered = 0;
     }
 
     function sell(uint256 tokensIn) external returns (uint256 ethOut) {
+        require(entered == 0, "reenter");
+        entered = 1;
         require(tokensIn > 0 && tokensIn <= tokensSold, "amount");
         require(balanceOf[msg.sender] >= tokensIn, "balance");
-        ethOut = quoteSell(tokensIn);
-        require(ethOut > 0 && ethOut <= realEth, "eth");
+        uint256 gross = quoteSell(tokensIn);
+        uint256 fee = gross * FEE_BPS / BPS;
+        ethOut = gross - fee;
+        require(ethOut > 0 && gross <= realEth, "eth");
         tokensSold -= tokensIn;
-        realEth -= ethOut;
+        realEth -= gross;
         _burn(msg.sender, tokensIn);
+        _take(fee);
         (bool ok, ) = msg.sender.call{value: ethOut}("");
         require(ok, "send");
         emit Sell(msg.sender, tokensIn, ethOut, realEth, tokensSold);
+        entered = 0;
     }
 
     function transfer(address to, uint256 amount) external returns (bool) {
@@ -113,6 +135,12 @@ contract BunkerCurve {
 
     receive() external payable {
         revert("use buy()");
+    }
+
+    function _take(uint256 fee) internal {
+        if (fee == 0) return;
+        (bool ok, ) = treasury.call{value: fee}("");
+        require(ok, "fee");
     }
 
     function _mint(address to, uint256 amount) internal {

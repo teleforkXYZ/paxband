@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-paper: #ffffff;
-  --color-ink: #003050;
-  --color-teal: #0c7c84;
-  --color-gold: #d0a020;
+  --color-paper: #f6f5f8;
+  --color-ink: #080848;
+  --color-teal: #e87868;
+  --color-gold: #e87868;
   --color-muted: #4d6574;
   --font-display: "Instrument Serif", Georgia, serif;
   --font-sans: "Outfit", system-ui, sans-serif;
@@ -41,12 +41,14 @@
 
 .nav-logo {
   height: 2.75rem;
-  width: auto;
+  width: 2.75rem;
+  border-radius: 999px;
 }
 
 .footer-logo {
-  height: 2.25rem;
-  width: auto;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 999px;
 }
 
 .nav-link {
@@ -162,12 +164,16 @@
   color: var(--color-teal);
 }
 
-.portrait {
+.mark {
+  width: min(16rem, 72vw);
   margin: 0;
-  overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--color-ink) 10%, transparent);
-  border-radius: 2rem;
-  background: var(--color-paper);
+}
+
+.mark img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 999px;
 }
 
 .portrait img {
