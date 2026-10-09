@@ -2,7 +2,7 @@
 pragma solidity ^0.8.24;
 
 /// @title BunkerCurve
-/// @notice BUNKER / ETH. A Robinhood-chain curve about a public post, not a Starknet product.
+/// @notice BUNKER / ETH. Token name is Bunker Mode. A Robinhood-chain curve about a public post, not a Starknet product.
 ///         Starknet wrote that they are considering becoming an L1, aiming to be the first
 ///         fully quantum-resistant network, with 2027 as the target.
 ///         Subject: https://x.com/Starknet/status/2108113391525204034
@@ -11,7 +11,7 @@ pragma solidity ^0.8.24;
 ///         Only ETH paid in by buyers sits in the contract, and sellers can take that back.
 ///         Not STRK. Not Starknet. Not StarkWare. No fee, no owner, no hidden mint.
 contract BunkerCurve {
-    string public constant name = "Bunker";
+    string public constant name = "Bunker Mode";
     string public constant symbol = "BUNKER";
     uint8 public constant decimals = 18;
 
